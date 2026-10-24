@@ -35,9 +35,9 @@ A estrutura será evoluída conforme o desenvolvimento:
 ```text
 biblioteca-java/
 ├── src/
-│   └── main/
-│       └── java/
-│           └── ...
+│   └── biblioteca
+│       └── Livro.java
+│       └── Main.java
 ├── .gitignore
 └── README.md
 ```
