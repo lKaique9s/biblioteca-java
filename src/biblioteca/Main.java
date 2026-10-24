@@ -7,20 +7,21 @@ public class Main {
     static Biblioteca bb = new Biblioteca();
     public static void main(String[] args) {
 
-        
+        bb.addLivro("succ", "202");
+        bb.addLivro("loops", "xxxxx");
+        bb.addLivro("bugsm", "kkkk");
 
-        bb.addLivro("Dom Casmurro", "Machado de Assis");
-        bb.addLivro("Dom 2", "Machado");
-        bb.addLivro("Gato De Botas", "Assis");
+        System.out.println(bb.buscarLivroPorId(2).getNomeLivro());
+
+        bb.atualizarLivro(2,"dsim2", "avai");
+        System.out.println(bb.buscarLivroPorId(2).getNomeLivro());
+
+        bb.removerLivro(2);
+        System.out.println(bb.buscarLivroPorId(2));
+
         bb.listarLivros();
-        var oc1 = bb.atualizarLivro(2, "Livro dot", "Dotted");
-        var oc2 = bb.removerLivro(1);
-        var oc3 = bb.removerLivro(99);
-        System.out.println(oc1);
-        System.out.println(oc2);
-        System.out.println(oc3);
-        bb.listarLivros();
-        
+
+
     }
 
 

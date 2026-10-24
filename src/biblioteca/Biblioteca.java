@@ -1,15 +1,21 @@
 package biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Biblioteca {
     private ArrayList<Livro> livros = new ArrayList<>();
+    private Map<Integer, Livro> livrosById = new HashMap<>();
 
     public Biblioteca() {
     }
 
     public void addLivro(String nomeLivro, String autor) {
-        livros.add(new Livro(nomeLivro, autor));
+        var livro = new Livro(nomeLivro, autor);
+
+        livros.add(livro);
+        livrosById.put(livro.getId(),livro);
     }
 
     public void listarLivros() {
@@ -21,15 +27,7 @@ public class Biblioteca {
     }
 
     public Livro buscarLivroPorId(int id) {
-
-        for (Livro livro : livros) {
-            if (id == livro.getId()) {
-                return livro;
-            }
-        }
-
-        System.out.println("Livro nao encontrado!");
-        return null;
+        return livrosById.get(id);
     }
 
     public boolean atualizarLivro(int id, String nomeLivro, String autor) {
@@ -46,11 +44,13 @@ public class Biblioteca {
         return true;
     }
 
-    public boolean removerLivro(int id){
+    public boolean removerLivro(int id) {
         var livro = buscarLivroPorId(id);
 
-        if(livro == null) return false;
+        if (livro == null)
+            return false;
 
+        livrosById.remove(id);
         return livros.remove(livro);
     }
 }
