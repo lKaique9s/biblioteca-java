@@ -15,10 +15,11 @@ O projeto está sendo desenvolvido incrementalmente, com foco no aprendizado e n
 ## Funcionalidades implementadas
 
 - Cadastro de livros com geração automática de identificadores.
-- Listagem de livros cadastrados.
-- Busca de livros por identificador.
+- Listagem de livros cadastrados na ordem de inserção.
+- Busca de livros por identificador utilizando `HashMap`.
+- Armazenamento dos livros em `ArrayList` e `HashMap`.
 - Atualização de título e autor, com validação dos dados.
-- Remoção de livros por identificador.
+- Remoção de livros por identificador, mantendo as coleções sincronizadas.
 - Retorno booleano para indicar o sucesso ou falha das operações de atualização e remoção.
 
 ## Funcionalidades planejadas
@@ -59,7 +60,7 @@ As classes são organizadas conforme suas responsabilidades, separando o modelo 
 |---|---|---|
 | 1. Modelagem | Criar a classe `Livro` e aplicar encapsulamento. | Concluída |
 | 2. CRUD inicial | Cadastrar, listar, consultar, atualizar e remover livros utilizando `ArrayList`. | Concluída |
-| 3. Busca e remoção | Aprimorar a busca e trabalhar com identificadores, `List` e `Map`. | Em andamento |
+| 3. Busca e remoção | Aprimorar a busca e trabalhar com identificadores, `List` e `Map`. | Concluída |
 | 4. Validações | Tratar dados inválidos e exceções. | Pendente |
 | 5. Empréstimos | Controlar disponibilidade, empréstimos e devoluções. | Pendente |
 | 6. Organização | Aplicar abstração, interfaces e polimorfismo quando apropriado. | Pendente |
@@ -69,8 +70,9 @@ As classes são organizadas conforme suas responsabilidades, separando o modelo 
 ## Metodologia
 
 O projeto é desenvolvido por etapas, com implementação gradual das funcionalidades, exercícios práticos, revisão de código e testes manuais.
+
 O objetivo é compreender os conceitos e conseguir implementá-los de forma independente, sem depender de soluções completas prontas.
 
 ## Status
 
-Em desenvolvimento — Etapas 1 e 2 concluídas.
+Em desenvolvimento — Etapas 1, 2 e 3 concluídas.
