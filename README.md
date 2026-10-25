@@ -15,12 +15,15 @@ O projeto está sendo desenvolvido incrementalmente, com foco no aprendizado e n
 ## Funcionalidades implementadas
 
 - Cadastro de livros com geração automática de identificadores.
+- Validação de título e autor para impedir dados nulos ou vazios.
 - Listagem de livros cadastrados na ordem de inserção.
 - Busca de livros por identificador utilizando `HashMap`.
 - Armazenamento dos livros em `ArrayList` e `HashMap`.
-- Atualização de título e autor, com validação dos dados.
+- Atualização de título e autor com validação dos dados.
 - Remoção de livros por identificador, mantendo as coleções sincronizadas.
-- Retorno booleano para indicar o sucesso ou falha das operações de atualização e remoção.
+- Retorno booleano para indicar o sucesso ou a falha das operações de cadastro, atualização e remoção.
+- Lançamento de `IllegalArgumentException` para dados inválidos no construtor e nos setters.
+- Tratamento de exceções nas operações de cadastro e atualização.
 
 ## Funcionalidades planejadas
 
@@ -38,8 +41,6 @@ O projeto está sendo desenvolvido incrementalmente, com foco no aprendizado e n
 O sistema é executado pelo terminal e utiliza armazenamento em memória. Os dados não são mantidos após o encerramento do programa.
 
 ## Organização do projeto
-
-A estrutura atual do projeto:
 
 ```text
 biblioteca-java/
@@ -61,7 +62,7 @@ As classes são organizadas conforme suas responsabilidades, separando o modelo 
 | 1. Modelagem | Criar a classe `Livro` e aplicar encapsulamento. | Concluída |
 | 2. CRUD inicial | Cadastrar, listar, consultar, atualizar e remover livros utilizando `ArrayList`. | Concluída |
 | 3. Busca e remoção | Aprimorar a busca e trabalhar com identificadores, `List` e `Map`. | Concluída |
-| 4. Validações | Tratar dados inválidos e exceções. | Pendente |
+| 4. Validações e exceções | Validar dados, lançar exceções e tratar falhas nas operações. | Concluída |
 | 5. Empréstimos | Controlar disponibilidade, empréstimos e devoluções. | Pendente |
 | 6. Organização | Aplicar abstração, interfaces e polimorfismo quando apropriado. | Pendente |
 | 7. Relatórios | Utilizar Streams para filtrar, ordenar e resumir dados. | Pendente |
@@ -75,4 +76,4 @@ O objetivo é compreender os conceitos e conseguir implementá-los de forma inde
 
 ## Status
 
-Em desenvolvimento — Etapas 1, 2 e 3 concluídas.
+Em desenvolvimento — Etapas 1, 2, 3 e 4 concluídas.

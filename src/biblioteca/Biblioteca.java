@@ -11,11 +11,17 @@ public class Biblioteca {
     public Biblioteca() {
     }
 
-    public void addLivro(String nomeLivro, String autor) {
-        var livro = new Livro(nomeLivro, autor);
+    public boolean addLivro(String nomeLivro, String autor) {
+        try {
+            var livro = new Livro(nomeLivro, autor);
 
-        livros.add(livro);
-        livrosById.put(livro.getId(),livro);
+            livros.add(livro);
+            livrosById.put(livro.getId(), livro);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+
     }
 
     public void listarLivros() {
@@ -39,9 +45,13 @@ public class Biblioteca {
         if (autor == null || autor.isBlank())
             return false;
 
-        livro.setNomeLivro(nomeLivro);
-        livro.setAutor(autor);
-        return true;
+        try {
+            livro.setNomeLivro(nomeLivro);
+            livro.setAutor(autor);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 
     public boolean removerLivro(int id) {
