@@ -8,28 +8,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        bb.addLivro("Dom Casmurro", "pppp");
-        bb.addLivro("vazio", "dasdad");
-        bb.atualizarLivro(1, "Memorias postumas", "");
+        bb.addLivro("Dom Casmurro", "Machado de Assis");
 
-        boolean atualizado = bb.atualizarLivro(
-                1, "Memórias Póstumas", "Machado de Assis");
+        System.out.println(bb.emprestarLivro(1)); // true
+        System.out.println(bb.emprestarLivro(1)); // false
 
-        System.out.println(atualizado);
+        System.out.println(bb.devolverLivro(1)); // true
+        System.out.println(bb.devolverLivro(1)); // false
 
-        atualizado = bb.atualizarLivro(
-                99, "Memórias Póstumas", "Machado de Assis");
-
-        System.out.println(atualizado);
-
-        atualizado = bb.removerLivro(1);
-
-        System.out.println(atualizado);
-        bb.listarLivros();
-
-        bb.addLivro("succ", "202");
-        bb.addLivro("loops", "xxxxx");
-        bb.listarLivros();
+        System.out.println(bb.emprestarLivro(999)); // false
     }
 
 }

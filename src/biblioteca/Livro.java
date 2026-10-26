@@ -5,6 +5,7 @@ public class Livro {
     private String nomeLivro;
     private String autor;
     private static int contadorId = 0;
+    private boolean emprestado = false;
 
     public Livro(String nomeLivro, String autor) {
         if (nomeLivro == null || nomeLivro.isBlank()) {
@@ -42,6 +43,25 @@ public class Livro {
             throw new IllegalArgumentException("Autor inválido!");
         }
         this.autor = autor;
+    }
+    
+    public boolean isEmprestado(){
+        return this.emprestado;
+    }
+
+    public void emprestar(){
+        if(isEmprestado()){
+            throw new IllegalArgumentException("Livro ja esta emprestado!");
+        }
+        this.emprestado = true;
+
+    }
+
+    public void devolver(){
+        if(!isEmprestado()){
+            throw new IllegalArgumentException("Livro ja esta disponivel!");
+        }
+        this.emprestado = false;
     }
 
 }

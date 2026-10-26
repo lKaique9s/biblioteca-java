@@ -28,9 +28,11 @@ public class Biblioteca {
         for (Livro livro : livros) {
             System.out.println(livro.getId() + " - " +
                     livro.getNomeLivro() + " - " +
-                    livro.getAutor());
+                    livro.getAutor() + " - " +
+                    (livro.isEmprestado() ? "Emprestado" : "Disponível"));
         }
     }
+
 
     public Livro buscarLivroPorId(int id) {
         return livrosById.get(id);
@@ -62,5 +64,31 @@ public class Biblioteca {
 
         livrosById.remove(id);
         return livros.remove(livro);
+    }
+
+    public boolean emprestarLivro(int id) {
+        var livro = buscarLivroPorId(id);
+        if (livro == null)
+            return false;
+
+        try {
+            livro.emprestar();
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
+
+    public boolean devolverLivro(int id) {
+        var livro = buscarLivroPorId(id);
+        if (livro == null)
+            return false;
+
+        try {
+            livro.devolver();
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 }

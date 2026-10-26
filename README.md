@@ -63,7 +63,7 @@ As classes são organizadas conforme suas responsabilidades, separando o modelo 
 | 2. CRUD inicial | Cadastrar, listar, consultar, atualizar e remover livros utilizando `ArrayList`. | Concluída |
 | 3. Busca e remoção | Aprimorar a busca e trabalhar com identificadores, `List` e `Map`. | Concluída |
 | 4. Validações e exceções | Validar dados, lançar exceções e tratar falhas nas operações. | Concluída |
-| 5. Empréstimos | Controlar disponibilidade, empréstimos e devoluções. | Pendente |
+| 5. Empréstimos | Controlar disponibilidade, empréstimos e devoluções. | Concluída |
 | 6. Organização | Aplicar abstração, interfaces e polimorfismo quando apropriado. | Pendente |
 | 7. Relatórios | Utilizar Streams para filtrar, ordenar e resumir dados. | Pendente |
 | 8. Revisão final | Revisar o código e verificar os principais cenários de uso. | Pendente |
@@ -76,4 +76,4 @@ O objetivo é compreender os conceitos e conseguir implementá-los de forma inde
 
 ## Status
 
-Em desenvolvimento — Etapas 1, 2, 3 e 4 concluídas.
+Em desenvolvimento — Etapas 1, 2, 3, 4 e 5 concluídas.
