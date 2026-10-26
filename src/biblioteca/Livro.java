@@ -1,11 +1,15 @@
 package biblioteca;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 public class Livro {
     private int id;
     private String nomeLivro;
     private String autor;
     private static int contadorId = 0;
-    private boolean emprestado = false;
+    private StatusLivro status = StatusLivro.DISPONIVEL;
+    private LocalDate dataEmprestimo;
 
     public Livro(String nomeLivro, String autor) {
         if (nomeLivro == null || nomeLivro.isBlank()) {
@@ -21,6 +25,10 @@ public class Livro {
 
     public int getId() {
         return id;
+    }
+
+    public LocalDate getDataEmprestimo() {
+        return dataEmprestimo;
     }
 
     public String getNomeLivro() {
@@ -44,24 +52,41 @@ public class Livro {
         }
         this.autor = autor;
     }
-    
-    public boolean isEmprestado(){
-        return this.emprestado;
+
+    public StatusLivro getStatus() {
+        return this.status;
     }
 
-    public void emprestar(){
-        if(isEmprestado()){
-            throw new IllegalArgumentException("Livro ja esta emprestado!");
+    public boolean isEmprestado() {
+        return this.status == StatusLivro.EMPRESTADO;
+    }
+
+    public void emprestar() {
+        if (this.status != StatusLivro.DISPONIVEL) {
+            throw new IllegalArgumentException("Livro nao esta disponivel!");
         }
-        this.emprestado = true;
+        setDataEmprestimo(LocalDate.now());
+        this.status = StatusLivro.EMPRESTADO;
 
     }
 
-    public void devolver(){
-        if(!isEmprestado()){
-            throw new IllegalArgumentException("Livro ja esta disponivel!");
+    private void setDataEmprestimo(LocalDate dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public void devolver() {
+        if (this.status != StatusLivro.EMPRESTADO) {
+            throw new IllegalArgumentException("Livro nao esta emprestado!");
         }
-        this.emprestado = false;
+        setDataEmprestimo(null);
+        this.status = StatusLivro.DISPONIVEL;
+    }
+
+    public long getDiasEmprestados() {
+        if (this.status != StatusLivro.EMPRESTADO)
+            return 0;
+
+        return ChronoUnit.DAYS.between(dataEmprestimo, LocalDate.now());
     }
 
 }

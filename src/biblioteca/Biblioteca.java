@@ -29,7 +29,7 @@ public class Biblioteca {
             System.out.println(livro.getId() + " - " +
                     livro.getNomeLivro() + " - " +
                     livro.getAutor() + " - " +
-                    (livro.isEmprestado() ? "Emprestado" : "Disponível"));
+                    (livro.getStatus()));
         }
     }
 
@@ -59,7 +59,7 @@ public class Biblioteca {
     public boolean removerLivro(int id) {
         var livro = buscarLivroPorId(id);
 
-        if (livro == null)
+        if (livro == null || livro.getStatus() != StatusLivro.DISPONIVEL)
             return false;
 
         livrosById.remove(id);
