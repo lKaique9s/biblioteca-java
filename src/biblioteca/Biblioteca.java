@@ -3,6 +3,7 @@ package biblioteca;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 public class Biblioteca {
     private ArrayList<Livro> livros = new ArrayList<>();
@@ -67,27 +68,22 @@ public class Biblioteca {
     }
 
     public boolean emprestarLivro(int id) {
-        var livro = buscarLivroPorId(id);
-        if (livro == null)
-            return false;
-
-        try {
-            livro.emprestar();
-            return true;
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
+        return executarAcaoNoLivro(id, Livro::emprestar);
     }
 
     public boolean devolverLivro(int id) {
+        return executarAcaoNoLivro(id, Livro::devolver);
+    }
+
+    private boolean executarAcaoNoLivro(int id, Consumer<Livro> acao){
         var livro = buscarLivroPorId(id);
         if (livro == null)
             return false;
 
-        try {
-            livro.devolver();
+        try{
+            acao.accept(livro);
             return true;
-        } catch (IllegalArgumentException e) {
+        } catch(IllegalArgumentException e){
             return false;
         }
     }
