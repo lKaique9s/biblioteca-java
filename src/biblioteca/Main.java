@@ -3,62 +3,49 @@ package biblioteca;
 public class Main {
 
     public static void main(String[] args) {
-        Biblioteca bb = new Biblioteca();
+        Biblioteca biblioteca = new Biblioteca();
 
-        // 1. Cadastrar um livro
-        bb.addLivro("Dom Casmurro", "Machado de Assis");
+        // Preparando os dados para os testes
+        biblioteca.addLivro("Dom Casmurro", "Machado de Assis");
+        biblioteca.addLivro("O Hobbit", "J. R. R. Tolkien");
+        biblioteca.addLivro("Clean Code", "Robert C. Martin");
+        biblioteca.addLivro("Dom Quixote", "Miguel de Cervantes");
 
-        Livro livro = bb.buscarLivroPorId(1);
+        // Teste 1: busca por título existente
+        System.out.println("Teste 1 - Busca por 'Dom':");
+        for (Livro livro : biblioteca.buscarLivrosPorTitulo("Dom")) {
+            System.out.println(livro.getNomeLivro());
+        }
 
-        System.out.println("=== TESTE INICIAL ===");
-        System.out.println("Status: " + livro.getStatus());
-        System.out.println("Dias emprestado: " + livro.getDiasEmprestados());
-        // Esperado: DISPONIVEL e 0
+        // Teste 2: busca ignorando maiúsculas e minúsculas
+        System.out.println("\nTeste 2 - Busca por 'HOBBIT':");
+        for (Livro livro : biblioteca.buscarLivrosPorTitulo("HOBBIT")) {
+            System.out.println(livro.getNomeLivro());
+        }
 
-        // 2. Emprestar o livro
-        System.out.println("\n=== TESTE DE EMPRESTIMO ===");
-        System.out.println("Emprestar: " + bb.emprestarLivro(1));
-        System.out.println("Status: " + livro.getStatus());
-        System.out.println("Data do empréstimo: " + livro.getDataEmprestimo());
-        System.out.println("Dias emprestado: " + livro.getDiasEmprestados());
-        // Esperado: true, EMPRESTADO, data atual e 0
+        // Teste 3: título inexistente
+        System.out.println("\nTeste 3 - Busca por 'Harry Potter':");
+        System.out.println(
+                "Quantidade encontrada: " +
+                        biblioteca.buscarLivrosPorTitulo("Harry Potter").size());
 
-        // 3. Tentar emprestar novamente
-        System.out.println("\n=== TESTE DE EMPRESTIMO DUPLICADO ===");
-        System.out.println("Emprestar novamente: " + bb.emprestarLivro(1));
-        // Esperado: false
+        // Teste 4: termo null
+        System.out.println("\nTeste 4 - Busca por null:");
+        System.out.println(
+                "Quantidade encontrada: " +
+                        biblioteca.buscarLivrosPorTitulo(null).size());
 
-        // 4. Tentar remover enquanto está emprestado
-        System.out.println("\n=== TESTE DE REMOCAO ===");
-        System.out.println("Remover emprestado: " + bb.removerLivro(1));
-        // Esperado: false
+        // Teste 5: termo vazio
+        System.out.println("\nTeste 5 - Busca por texto vazio:");
+        System.out.println(
+                "Quantidade encontrada: " +
+                        biblioteca.buscarLivrosPorTitulo("").size());
 
-        // 5. Simular uma data de empréstimo anterior
-        // Apenas para testar o cálculo sem esperar vários dias.
-        System.out.println("\n=== TESTE DE CONTAGEM DE DIAS ===");
-        System.out.println("Dias emprestado: " + livro.getDiasEmprestados());
-        // Esperado: 5
-
-        // 6. Devolver o livro
-        System.out.println("\n=== TESTE DE DEVOLUCAO ===");
-        System.out.println("Devolver: " + bb.devolverLivro(1));
-        System.out.println("Status: " + livro.getStatus());
-        System.out.println("Data do empréstimo: " + livro.getDataEmprestimo());
-        System.out.println("Dias emprestado: " + livro.getDiasEmprestados());
-        // Esperado: true, DISPONIVEL, null e 0
-
-        // 7. Tentar devolver novamente
-        System.out.println("\n=== TESTE DE DEVOLUCAO DUPLICADA ===");
-        System.out.println("Devolver novamente: " + bb.devolverLivro(1));
-        // Esperado: false
-
-        // 8. Remover após devolver
-        System.out.println("\n=== TESTE DE REMOCAO FINAL ===");
-        System.out.println("Remover disponível: " + bb.removerLivro(1));
-        // Esperado: true, conforme sua regra atual
-
-        // 9. Tentar buscar o livro removido
-        System.out.println("Buscar removido: " + bb.buscarLivroPorId(1));
-        // Esperado: null
+        // Teste 6: termo com espaços
+        System.out.println("\nTeste 6 - Busca por espaços:");
+        System.out.println(
+                "Quantidade encontrada: " +
+                        biblioteca.buscarLivrosPorTitulo("   ").size());
     }
+
 }

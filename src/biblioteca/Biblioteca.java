@@ -2,6 +2,7 @@ package biblioteca;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -33,7 +34,6 @@ public class Biblioteca {
                     (livro.getStatus()));
         }
     }
-
 
     public Livro buscarLivroPorId(int id) {
         return livrosById.get(id);
@@ -75,16 +75,57 @@ public class Biblioteca {
         return executarAcaoNoLivro(id, Livro::devolver);
     }
 
-    private boolean executarAcaoNoLivro(int id, Consumer<Livro> acao){
+    private boolean executarAcaoNoLivro(int id, Consumer<Livro> acao) {
         var livro = buscarLivroPorId(id);
         if (livro == null)
             return false;
 
-        try{
+        try {
             acao.accept(livro);
             return true;
-        } catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return false;
         }
+    }
+
+    public long contarLivrosDisponiveis() {
+        return livros.stream()
+                .filter(livro -> livro.getStatus() == StatusLivro.DISPONIVEL)
+                .count();
+    }
+
+    public long contarLivrosEmprestados() {
+        return livros.stream()
+                .filter(livro -> livro.getStatus() == StatusLivro.EMPRESTADO)
+                .count();
+    }
+
+    public List<Livro> buscarLivrosPorAutor(String autor) {
+        return livros.stream()
+                .filter(livro -> livro.getAutor().equalsIgnoreCase(autor))
+                .toList();
+    }
+
+    public List<Livro> listarLivrosPorNome() {
+        return livros.stream()
+                .sorted((livro1, livro2) -> livro1.getNomeLivro().compareToIgnoreCase(livro2.getNomeLivro()))
+                .toList();
+    }
+
+    public List<Livro> listarLivrosPorDiasEmprestados() {
+        return livros.stream()
+                .filter(livro -> livro.getStatus() == StatusLivro.EMPRESTADO)
+                .sorted((livro1, livro2) -> Long.compare(livro2.getDiasEmprestados(), livro1.getDiasEmprestados()))
+                .toList();
+    }
+
+    public List<Livro> buscarLivrosPorTitulo(String termo) {
+        if (termo == null || termo.isBlank())
+            return List.of();
+
+        return livros.stream()
+                .filter(livro -> livro.getNomeLivro().toLowerCase()
+                            .contains(termo.toLowerCase()))
+                .toList();
     }
 }

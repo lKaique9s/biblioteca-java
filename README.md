@@ -48,6 +48,7 @@ biblioteca-java/
 │   └── biblioteca/
 │       ├── Livro.java
 │       ├── Biblioteca.java
+│       ├── StatusLivro.java
 │       └── Main.java
 ├── .gitignore
 └── README.md
@@ -64,8 +65,8 @@ As classes são organizadas conforme suas responsabilidades, separando o modelo 
 | 3. Busca e remoção | Aprimorar a busca e trabalhar com identificadores, `List` e `Map`. | Concluída |
 | 4. Validações e exceções | Validar dados, lançar exceções e tratar falhas nas operações. | Concluída |
 | 5. Empréstimos | Controlar disponibilidade, empréstimos e devoluções. | Concluída |
-| 6. Organização | Aplicar abstração, interfaces e polimorfismo quando apropriado. | Pendente |
-| 7. Relatórios | Utilizar Streams para filtrar, ordenar e resumir dados. | Pendente |
+| 6. Organização | Aplicar abstração, interfaces e polimorfismo quando apropriado. | Concluída |
+| 7. Relatórios | Utilizar Streams para filtrar, ordenar e resumir dados. | Concluída |
 | 8. Revisão final | Revisar o código e verificar os principais cenários de uso. | Pendente |
 
 ## Metodologia
@@ -76,4 +77,4 @@ O objetivo é compreender os conceitos e conseguir implementá-los de forma inde
 
 ## Status
 
-Em desenvolvimento — Etapas 1, 2, 3, 4 e 5 concluídas.
+Em desenvolvimento — Etapas 1, 2, 3, 4, 5, 6 e 7 concluídas.
